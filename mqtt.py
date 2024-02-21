@@ -33,7 +33,7 @@ def on_message(client, userdata, msg):
     if payload != "":
        client.publish(my_topic, json.dumps(payload), qos=qos, retain=False)
 
-client = mqtt.Client("Bticino_X8000")  
+client = mqtt.Client(mqtt_client.CallbackAPIVersion.VERSION1, "Bticino_X8000")  
 client.on_connect = on_connect
 client.on_message = on_message
 client.username_pw_set(str(mqtt_user),str(mqtt_pass))
